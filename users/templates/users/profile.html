@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{{profile.user.username}} profile <br>
+
+
+{% for p in profile.docs.all %}
+	<a href="{{media}}{{ p.file }}">{{ p.file }}</a><br>
+{% endfor %}
+</body>
+</html>

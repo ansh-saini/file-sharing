@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{% if messages %}
+		{% for message in messages %}
+			{{ message }}
+		{% endfor %}
+	{% endif %}
+	Logged in as {{ user.username }} <br><br>
+
+	<a href="{% url 'profile' %}">Profile </a>
+
+	<br>
+<a href="{% url 'login' %}">Login</a>
+	<br>
+
+	Search Users: 
+	
+</body>
+</html>
