@@ -14,7 +14,8 @@ urlpatterns = [
     path('accounts/profile/', user_views.profile, name = 'profile'),
     # path('upload/', user_views.DocumentCreateView.as_view(), name = 'upload'),
     path('upload/', user_views.file_upload, name = 'upload'),
-    
+    path('search/', user_views.search_user, name = 'search-user'),
+    path('user/<username>', user_views.user_profile, name = 'user-profile'),
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

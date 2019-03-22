@@ -1,0 +1,19 @@
+{% extends "users/base.html" %}
+{% block content %}
+{{ profile }}<br>
+
+Files {{ profile.user.username }} has shared with you:<br>
+	{% for p in profile.docs.all %}
+		{% if p.user == profile.user %}
+		{{p.user}}~~<a href="{{media}}{{ p.file }}">{{ p.name }}</a><br>
+		{% endif %}
+	{% endfor %}	
+
+Files you have shared with {{ profile.user.username }}:<br>
+	{% for p in profile.docs.all %}
+		{% if p.user == user %}
+		{{p.user}}~~<a href="{{media}}{{ p.file }}">{{ p.name }}</a><br>
+		{% endif %}
+	{% endfor %}	
+
+{% endblock content %}

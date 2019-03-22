@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>File Sharing</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'users/style.css' %}">
+</head>
+<body>
+	<div class="header">
+  		<div class="logo">
+        {% if user.is_authenticated %}
+    		<div>Logged in as {{ user.username }}</div>
+        {% else %}
+        <div>File Sharing</div>
+        {% endif %}
+  		</div>
+  		<div class="menu">
+    		<a href="{% url 'home' %}" class="link">
+      			<div class="title">Home</div>
+      			<div class="bar"></div>
+    		</a>
+    		<a href="{% url 'profile' %}" class="link">
+      			<div class="title">Profile</div>
+      			<div class="bar"></div>
+    		</a>
+        {% if user.is_authenticated %}
+    		  <a href="{% url 'logout' %}" class="link">
+            <div class="title">Logout</div>
+      			<div class="bar"></div>
+    		  </a>
+        {% else %}
+          <a href="{% url 'login' %}" class="link">
+            <div class="title">Login</div>
+            <div class="bar"></div>
+          </a>        
+        {% endif %}
+  		</div>
+	</div>
+  <div class="content">
+        {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

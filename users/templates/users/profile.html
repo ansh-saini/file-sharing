@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	{{profile.user.username}} profile <br>
+{% extends "users/base.html" %}
+{% block content %}
 
-
-{% for p in profile.docs.all %}
-	<a href="{{media}}{{ p.file }}">{{ p.file }}</a><br>
-{% endfor %}
-</body>
-</html>
+	<h3>{{profile.user.username}}'s profile</h3>
+	<legend>Your Uploads:</legend>
+	{% for p in profile.docs.all %}
+		{% if p.user == user %}
+		<div class="file-link"><a href="{{media}}{{ p.file }}">{{ p.name }}</a></div>
+		{% endif %}
+	{% endfor %}
+	
+	<legend>Files Shared With You:</legend>
+	{% for p in profile.docs.all %}
+		{% if p.user != user %}
+		<span class="user">{{p.user}}: </span>
+		<a href="{{media}}{{ p.file }}">{{ p.name }}</a><br>
+		{% endif %}
+	{% endfor %}	
+{% endblock content %}

@@ -1,23 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends "users/base.html" %}
+{% block content %}
+
 	{% if messages %}
 		{% for message in messages %}
-			{{ message }}
+            <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+            </div>
 		{% endfor %}
 	{% endif %}
-	Logged in as {{ user.username }} <br><br>
-
-	<a href="{% url 'profile' %}">Profile </a>
-
-	<br>
-<a href="{% url 'login' %}">Login</a>
-	<br>
-
-	Search Users: 
+	<legend>Search Users:</legend> 
+	<form method=POST action='search/'>
+		{% csrf_token %}
+		{{form}}
+		<button type=submit>Submit!</button>
+	</form>
 	
-</body>
-</html>
+{% endblock content %}

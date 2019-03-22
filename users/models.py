@@ -16,6 +16,9 @@ class Profile(models.Model):
 	def __str__(self):
 		return f'{self.user.username} Profile'
 
+	# def get_absolute_url(self):
+ #        return reverse('user-profile', kwargs={'pk': self.pk})
+
 
 #Signals
 from django.db.models.signals import post_save
