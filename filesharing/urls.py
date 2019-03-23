@@ -12,9 +12,11 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('accounts/profile/', user_views.profile, name = 'profile'),
-    # path('upload/', user_views.DocumentCreateView.as_view(), name = 'upload'),
+    path('delete/', user_views.file_delete, name = 'delete'),
     path('upload/', user_views.file_upload, name = 'upload'),
     path('search/', user_views.search_user, name = 'search-user'),
+    path('link/', user_views.share_link, name = 'link'),
+    path('unlink/', user_views.share_unlink, name = 'unlink'),
     path('user/<username>', user_views.user_profile, name = 'user-profile'),
 ] 
 

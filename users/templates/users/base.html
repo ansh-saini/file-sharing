@@ -24,6 +24,22 @@
       			<div class="title">Profile</div>
       			<div class="bar"></div>
     		</a>
+        <a href="{% url 'upload' %}" class="link">
+            <div class="title">Upload</div>
+            <div class="bar"></div>
+        </a>
+        <a href="{% url 'delete' %}" class="link">
+            <div class="title">Delete</div>
+            <div class="bar"></div>
+        </a>        
+        <a href="{% url 'link' %}" class="link">
+            <div class="title">Share Files</div>
+            <div class="bar"></div>
+        </a>
+        <a href="{% url 'unlink' %}" class="link">
+            <div class="title">Un-Share Files</div>
+            <div class="bar"></div>
+        </a>        
         {% if user.is_authenticated %}
     		  <a href="{% url 'logout' %}" class="link">
             <div class="title">Logout</div>

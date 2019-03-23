@@ -56,3 +56,7 @@ html, body {
   color: black;
   font-size: 21px;
 }
+
+ul.errorlist {
+  display:none;
+}

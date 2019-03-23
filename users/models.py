@@ -16,17 +16,20 @@ class Profile(models.Model):
 	def __str__(self):
 		return f'{self.user.username} Profile'
 
-	# def get_absolute_url(self):
- #        return reverse('user-profile', kwargs={'pk': self.pk})
-
-
 #Signals
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from .models import Profile
+import os
 
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
 	if created:
 		Profile.objects.create(user=instance)
+
+@receiver(post_delete, sender=Document)
+def auto_delete_file_on_delete(sender, instance, **kwargs):
+	if instance.file:
+		if os.path.isfile(instance.file.path):
+			os.remove(instance.file.path)

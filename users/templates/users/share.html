@@ -1,0 +1,11 @@
+{% extends "users/base.html" %}
+{% block content %}
+
+	<legend class="border-bottom mb-4">Share Files!</legend> 
+	<form method=POST>
+		{% csrf_token %}
+		{{form.as_p}}
+		<button class="btn btn-outline-info" type=submit>Submit!</button>
+	</form>
+
+{% endblock content %}

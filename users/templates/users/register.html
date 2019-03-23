@@ -2,10 +2,10 @@
 {% block content %}
 
 	<form method="POST">
-		<legend>Register Here</legend>
+		<legend class="border-bottom mb-4">Register Here</legend>
 		{% csrf_token %}
 		{{ form.as_p}}
-		<button type="Submit">Submit!</button>
+		<button class="btn btn-outline-info" type="Submit">Submit!</button>
 	</form>
 </body>
 </html>

@@ -3,8 +3,8 @@
 
 <form method=POST enctype="multipart/form-data">
 	{% csrf_token %}
-	{{form}}
-	<button type=submit>Submit!</button>
+	{{form.as_p}}
+	<button class="btn btn-outline-info" type=submit>Submit!</button>
 </form>
 
 {% endblock content %}

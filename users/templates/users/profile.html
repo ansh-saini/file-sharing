@@ -2,18 +2,28 @@
 {% block content %}
 
 	<h3>{{profile.user.username}}'s profile</h3>
-	<legend>Your Uploads:</legend>
+	<legend class="border-bottom mb-4">Your Uploads:</legend>
 	{% for p in profile.docs.all %}
 		{% if p.user == user %}
-		<div class="file-link"><a href="{{media}}{{ p.file }}">{{ p.name }}</a></div>
+		<div class="file-link">
+			<a href="{{media}}{{ p.file }}">
+			{{ p.name }}
+			</a>
+		</div>
 		{% endif %}
 	{% endfor %}
 	
-	<legend>Files Shared With You:</legend>
+	<legend class="border-bottom mb-4">Files Shared With You:</legend>
 	{% for p in profile.docs.all %}
 		{% if p.user != user %}
-		<span class="user">{{p.user}}: </span>
-		<a href="{{media}}{{ p.file }}">{{ p.name }}</a><br>
+			<span class="user">
+				{{p.user}}: 
+			</span>
+			<div class="file-link">
+				<a href="{{media}}{{ p.file }}">
+					{{ p.name }}
+				</a>
+			</div>
 		{% endif %}
 	{% endfor %}	
 {% endblock content %}
